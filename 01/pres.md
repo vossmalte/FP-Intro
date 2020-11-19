@@ -1,166 +1,225 @@
-# Begrüßung
+# Grundlagen
 
-## Willkommen
+## Grundlagen: Erste Schritte
 
-... über mich
+`z = 2`
 
-- studiere Mathematik und Informatik auf Lehramt
-- bin seit 2015 am KIT
-- spiele in meiner Freizeit Frisbee
-- habe in meiner Bachelorarbeit neuronale Netze für Bewegungserkennung in der Robotik eingesetzt
-- wohne in der Karlsruher Oststadt
+`f x = 2*x + 3`
 
-## Über euch
+`meineListe = [1,1,2,3,5]`
 
-Stellt euch bitte kurz vor:
+## if-then-else
 
-- Wie heißt du?
-- Wo wohnst du?
-- Hast du schon mal programmiert? Wenn ja, was?
-- Hattest du Informatik in der Schule?
-- Wo stehst du gerade im Studium? Schon in Karlsruhe angekommen?
+`f x y = if x >= y then x else y`
 
-# Programmieren
+Was macht `f`?
+\pause
+Das Maximum von `x,y` berechnen.
 
-## Organisatorisches
-
-- Folien lade ich im ILIAS hoch
-- Tutoren sind die ersten Ansprechpartner für die Vorlesung
-- Wie und wo stellt man Fragen?
-    - FAQ auf der Homepage
-    - Wiki im ILIAS
-    - Im Forum gibt es die Frage
-    - Im Forum die Frage stellen
-    - Tutor fragen
-    - Übungsleitung fragen
-
-## Struktur des Moduls
-
-- Der Übungsschein ist Voraussetzung für die Teilnahme an den Abschlussaufgaben
-- Die Abschlussaufgaben sind benotet
-- Voraussetzungen für den Übungsschein:
-    - mehr als 50% auf den Übungsblättern
-    - Präsenzübung
-- euer Tutor korrigiert eure Übungsblätter
-
-## Präsenzübung
-
-- Präsenzübung ist eine schriftliche Prüfung
-- Dieses Semester: Vorrechnen im Tutorium als Alternative zur Präsenzübung
-
-## Gruppenarbeit
-
-- manche Aufgaben werden im Team abgegeben
-- ein Team besteht aus 3 Personen
-- alle Personen müssen im gleichen Tutorium sein
-- alle Personen geben das gleiche ab
+## switch-case
 
 \pause
 
-- bildet bitte jetzt Teams
-- Teams werden notiert
-
-## Inhalte des Tutoriums
-
-- Themen aus der Vorlesung wiederholen
-- Übungsblätter besprechen
-- kleine Programmieraufgaben
-- Fragen beantworten
-\pause
-- __Ihr entscheidet, was wir im Tutorium machen__
-
-## Wichtig
-
-- Einverständniserklärung / Disclaimer abgeben
-- im Praktomaten anmelden
-    - VPN installieren
-- im ILIAS anmelden
-
-# Java - Start
-
-## Java: Installation
-
-- OpenJDK eignet sich als Entwicklungsumgebung
-    - `sudo apt-get install openjdk-11-jdk` oder adoptopenjdk.net
-- Windows: Umgebungsvariablen setzen!
-- in der CMD oder im Terminal testen:
-    - `java --version` und `javac --version`
-
-## Java: Mein erstes Programm
-
-~~~{.java}
-class Programm {
-    public static void main(String[] args) {
-        System.out.println("Hallo :-)");
-    }
-}
+~~~
+max3 x y z
+  | x >= y && x >= z = x
+  | y >= x && y >= z = y
+  |otherwise = z
 ~~~
 
 \pause
+Der erste passende Fall wird ausgewertet.
 
-- Kompilieren: `javac Programm.java`
-- Ausführen: `java Programm`
+Diese Struktur wird guards genannt.
 
-## Eine kleine Einführng in CMD / bash
+## Haskell ausführen
 
-- `dir` / `ls` zeigt die Inhalte des aktuellen Ordners an
-- mit `cd` kann man das Verzeichnis wechseln (`..` ist "zurück")
-
-\pause
-
-- Windows unterstützt das Windows Subsystem für Linux
-- Auf Windows gibt es PowerShell, das funktioniert wie bash
-
-# Objekte und Klassen
-
-## Objektorientierung
-
-- Objekt-orientierte Programmierung ist das Mantra dieser Vorlesung
-
-- Begriffe: Objekt, Klasse
+Datei anlegen: `programm.hs`
 
 \pause
+Im Terminal:
 
-- Objekte sind Abstrahierungen der realen Welt
-- Klassen sind Baupläne der Objekte
-- Die Eigenschaften von Objekten werden _Attribute_ genannt
+- zur Datei navigieren: `cd directory`
+- Interaktiven Compiler aufrufen: `ghci`
+- Programm laden: `:l programm.hs`
+- Programm neu laden: `:r`
 
-\pause
+## Aufgabe: Funktion definieren
 
-- `Car meinAuto = new Car();` erzeugt ein neues Objekt der Klasse Car
-
-## Aufgabe
-
-- modelliert ein Auto
-- mögliche Aspekte auf Papier festhalten oder direkt in Java implementieren
-
-# Datentypen
-
-## Datentypen - Übersicht
-
-- ganze Zahlen `int, byte, short, long`
-- Text: `String`
-- Kommazahlen: `double, float`
-- Wahrheitswerte: `boolean`
-
-## Datentypen - Operatoren
-
-- `+,-,*,/`
-- Mit Operatoren kann man Daten verknüpfen: `1+2`
-\pause
-- teste, welche Ergebnisse jeweils herauskommen:
-    - `9/2`
-    - `1 + 1/2`
-    - `5 * 0.5`
-    - `7 + "Hallo"`
-- testen, z.B. mit `System.out.println(1+2)`
-
-##
-
-\centering
+Graph von $f(x)$
 
 ~~~{=latex}
-\includegraphics[keepaspectratio,height=0.8\textheight]{01/abstraction.png}
+\includegraphics[keepaspectratio,width=.4\textwidth]{01/graphKontroll.png}
 ~~~
 
-<!---![xkcd: Abstraction](01/abstraction.png){height=80%,keepaspectratio}-->
+Definiere diese Funktion in Haskell.
+Verwende if-then-else oder guards.
+
+## Basisfälle
+
+~~~
+lucky 7 = "LUCKY NUMBER SEVEN!"  
+lucky x = "Sorry, you're out of luck, pal!"
+~~~
+
+\pause
+Das Konzept heißt Pattern-Matching. Mehr dazu bei Listen.
+
+## Rekursion
+
+Rekursion allgemein: Basisfall und allgemeiner Fall.
+\pause
+
+~~~
+factorial 0 = 1
+factorial n = n * (factorial (n-1))
+~~~
+
+## Prefix- / Infixnotation
+
+Im Allgemeinen verwenden wir Prefix-Notation: `max 255 256`
+\pause
+
+Besondere Funktionen werden infix notiert: `13+29`
+
+Man kann sie aber auch jeweils andernorts verwenden:
+
+~~~
+7 `mod` 3
+~~~
+
+`(+) 13 29`
+
+## Grundlagen: Aufgaben
+
+Schreibe eine Funktion...
+
+- welche die ganzzahlige Potenz $a^b$ berechnet
+- die für $a,b$ angibt, ob $a$ durch $b$ teilbar ist
+- zur Berechnung des ggT mit Hilfe des euklidischen Algorithmus
+- die prüft, ob eine Zahl prim ist
+- welche die ganzzahlige Potenz geschickt berechnet: $a^{2b}=(a^2)^b$
+
+# Typen
+
+## Funktionale Programmierung
+
+Alles ist Funktion*.
+
+`x = 3` ist eine parameterlose Funktion.
+
+Es gibt keine Nebeneffekte (außer IO)
+
+## Typen untersuchen
+
+`:t max`
+
+`max :: Ord a => a -> a -> a`
+
+Bedeutung?
+\pause
+a ist ein Typ und hat eine **Ord**nung.
+\pause
+
+`max` nimmt ein solches a und ein weiteres und gibt etwas vom Typ a aus.
+
+## Typen untersuchen 2
+
+~~~
+f x = x*x+1
+:t f
+f :: Num a => a -> a
+~~~
+
+Bedeutung?
+
+# Listen
+
+## Listen - Einstieg
+
+`[1,2,3,4,5]`
+
+`1:2:3:4:5:[]`
+
+`[1..5]`
+
+Was ist der Typ von `(:)`?
+
+Auf ein Element der Liste zugreifen: `[1,1,2,3,5,8] !! 3`
+
+## List comprehension
+
+`[x*x | x<-[1..30], mod x 2 == 0]`
+
+## Pattern matching
+
+~~~
+summiere [] = 0
+summiere (x:rest) = x + (summiere rest)
+~~~
+
+Zerteilung der Liste in Kopf und Rest.
+
+## Unendlichkeit
+
+`[1..]`
+
+Man kann unendliche Listen _definieren_,
+
+man sollte sie aber lieber nicht ganz _aufrufen_.
+
+`take 11 [1..]`
+
+## Operatoren auf Listen
+
+`map`
+
+`filter`
+
+`foldl`
+
+`zip`
+
+`zipWith`
+
+## Listen: Aufgaben
+
+Schreibe eine Funktion...
+
+- zur Berechnung der Länge einer Liste
+- die prüft, ob ein gesuchtes Element in einer Liste enthalten ist
+- die zwei sortierte Listen zu einer zusammenfasst (merge)
+- die eine Liste aller Quadratzahlen erzeugt
+- die merge-sort implementiert
+- die insertion-sort implementiert
+- die eine Liste umdreht
+
+# Fortgeschritten
+
+## Fibonacci und `zip`
+
+\pause
+
+`fib = 1:zipWith (+) (tail fib)`
+
+## Primzahlen
+
+TODO
+`primes = ?`
+
+## lambdas: $\lambda$
+
+TODO
+`langweilig = \x -> x`
+
+`linF m c = \x -> m*x+c`
+
+Lambdas sind anonyme Funktionen, sie haben keinen Namen.
+
+## endrekursive Funktionen
+
+## Typen in Haskell
+
+`type Polynom = [Double]`
+
+## Church-Zahlen
