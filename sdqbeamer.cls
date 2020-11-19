@@ -15,16 +15,16 @@
 
 % see README.md
 \DeclareOption{de}{
-  \kitslogan{KIT -- Die Forschungsuniversität in der Helmholtz-Gemeinschaft}
+  \kitslogan{$\text{true} = \lambda x \rightarrow \lambda y \rightarrow x$}
   \groupname{Institut für Beispiele}
-  \kitlogo{kitlogo_de_rgb}
+  \kitlogo{haskell-logo}
   \germantrue
   \PassOptionsToPackage{autostyle}{csquotes}
   }
 \DeclareOption{en}{
   \kitslogan{KIT -- The Research University in the Helmholtz Association}
   \groupname{Institute for Examples}
-  \kitlogo{kitlogo_en_rgb}
+  \kitlogo{haskell-logo}
   \germanfalse
   }
 \DeclareOption{4:3}{
@@ -271,8 +271,8 @@
   %   (<ho>,<vo>) within the box is to be placed at the point (<hpos>,<vpos>) on the page.
 
   % KIT-Logo
-  \begin{textblock*}{30mm}(\kitinnermargin,6.7mm)
-  \includegraphics[width=30mm]{logos/\@kitlogo} 
+  \begin{textblock*}{20mm}(\kitinnermargin,6.7mm)
+  \includegraphics[width=20mm]{logos/\@kitlogo} 
   \end{textblock*}
   
   % Gruppenlogo
@@ -330,9 +330,9 @@
       \fontsize{5.5pt}{5.5pt}\selectfont\@kitslogan
   \end{textblock*}
   
-  \begin{textblock*}{30mm}[1,.5](\dimexpr\paperwidth-\kitoutermargin\relax,\dimexpr\paperheight-.5\kitbottommargin)
+  \begin{textblock*}{35mm}[1,.5](\dimexpr\paperwidth-\kitoutermargin\relax,\dimexpr\paperheight-.5\kitbottommargin)
       \fontsize{11pt}{11pt}\selectfont\bfseries\raggedleft%
-      {\href{https://www.kit.edu}{www.kit.edu}}
+      {\href{vossmalte.github.io}{vossmalte.github.io}}
   \end{textblock*}
   
 }
