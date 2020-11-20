@@ -143,7 +143,9 @@ Bedeutung?
 
 `[1..5]`
 
+\pause
 Was ist der Typ von `(:)`?
+\pause
 
 Auf ein Element der Liste zugreifen: `[1,1,2,3,5,8] !! 3`
 
@@ -172,6 +174,9 @@ man sollte sie aber lieber nicht ganz _aufrufen_.
 
 ## Operatoren auf Listen
 
+`head, tail, last, init, take, drop`
+\pause
+
 `map`
 
 `filter`
@@ -187,7 +192,9 @@ man sollte sie aber lieber nicht ganz _aufrufen_.
 Schreibe eine Funktion...
 
 - zur Berechnung der Länge einer Liste
+- welche die Liste aller gerade Zahlen erzeugt
 - die prüft, ob ein gesuchtes Element in einer Liste enthalten ist
+- die ein Element in eine sortierte Liste einfügt
 - die zwei sortierte Listen zu einer zusammenfasst (merge)
 - die eine Liste aller Quadratzahlen erzeugt
 - die merge-sort implementiert
@@ -200,26 +207,62 @@ Schreibe eine Funktion...
 
 \pause
 
-`fib = 1:zipWith (+) (tail fib)`
+`fib = 1:zipWith (+) fib (tail fib)`
 
 ## Primzahlen
 
 TODO
 `primes = ?`
 
-## lambdas: $\lambda$
+## lambda: $\lambda$
 
-TODO
 `langweilig = \x -> x`
 
 `linF m c = \x -> m*x+c`
 
 Lambdas sind anonyme Funktionen, sie haben keinen Namen.
 
-## endrekursive Funktionen
+## Endrekursive Funktionen
+
+~~~
+pow a 0 = 1
+pow a b = a * pow a (b-1)
+~~~
+
+\pause
+
+~~~
+xpow a b = powAcc a b 1
+powAcc a b acc = a (b-1) (acc*a)
+~~~
 
 ## Typen in Haskell
 
 `type Polynom = [Double]`
 
+## Curry-ing
+
+`incr = 1 +`
+
+\pause
+`square = flip (^) 2`
+
+# Lambda-Kalkül
+
+## "Dinge" im Lambda-Kalkül
+
+`TRUE = \x y -> x`
+
+`FALSE = \x y -> y`
+
+`IF_ELSE = \b d e -> b d e`
+
+\pause Zum Testen:
+`IF_ELSE TRUE 0 1`
+
+\pause
+Das Lambda-Kalkül ist eine alternative zur Turing-Maschine.
+
 ## Church-Zahlen
+
+TODO
