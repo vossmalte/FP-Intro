@@ -177,6 +177,11 @@ man sollte sie aber lieber nicht ganz _aufrufen_.
 `head, tail, last, init, take, drop`
 \pause
 
+\vspace{1cm}
+
+::: {.columns}
+:::: {.column width=20%}
+
 `map`
 
 `filter`
@@ -186,6 +191,26 @@ man sollte sie aber lieber nicht ganz _aufrufen_.
 `zip`
 
 `zipWith`
+
+::::
+:::: {.column}
+
+`map odd [1..20]`
+\pause
+
+`filter odd [1..20]`
+\pause
+
+`foldl (+) 0 [1..10]`
+\pause
+
+`zip [1..4] ['a'..'d']`
+\pause
+
+`zipWith (*) [1..4] [5..8]`
+
+::::
+:::
 
 ## Listen: Aufgaben
 
@@ -211,8 +236,11 @@ Schreibe eine Funktion...
 
 ## Primzahlen
 
-TODO
-`primes = ?`
+~~~
+odds = filter odd [1..]
+oddPrimes (p : ps) = p : (oddPrimes [q | q <- ps, q `mod` p /= 0])
+primes = 2 : oddPrimes (tail odds)
+~~~
 
 ## lambda: $\lambda$
 
@@ -221,6 +249,14 @@ TODO
 `linF m c = \x -> m*x+c`
 
 Lambdas sind anonyme Funktionen, sie haben keinen Namen.
+
+\pause
+
+`filter (\x -> (mod x 3 == 0 || mod x 5 == 0)) [1..10]`
+
+\pause
+
+Parameter stehen vor dem Pfeil, Vorschrift dahinter
 
 ## Endrekursive Funktionen
 
@@ -239,6 +275,13 @@ powAcc a b acc = a (b-1) (acc*a)
 ## Typen in Haskell
 
 `type Polynom = [Double]`
+
+mit $f(x) = a_0 \cdot x^0 + a_1 \cdot x^1$ und den Koeffizienten $a_i$ im Datentyp gespeichert.
+
+\pause
+
+- Schreibe eine Funktion `add`, die zwei Polynome addiert
+- Nutze das Hornerschema, um ein Polynom auszuwerten
 
 ## Curry-ing
 
@@ -261,8 +304,61 @@ powAcc a b acc = a (b-1) (acc*a)
 `IF_ELSE TRUE 0 1`
 
 \pause
-Das Lambda-Kalkül ist eine alternative zur Turing-Maschine.
+Das Lambda-Kalkül ist eine Alternative zur Turing-Maschine.
 
 ## Church-Zahlen
 
-TODO
+::: {.columns}
+:::: {.column width=50%}
+
+`c0 = \s z -> z`
+
+`c1 = \s z -> s z`
+
+`c2 = \s z -> s (s z)`
+
+`c3 = \s z -> s (s (s z))`
+
+\pause
+
+Die Zahlen drücken aus, wie oft eine Funktion `s` angewandt wird.
+
+Umrechnen: `c3 (1+) 0`
+
+::::
+
+\pause
+
+:::: {.column}
+
+Nachfolger:
+
+`succ = \n s z -> s (n s z)`
+
+`c4 = succ c3`
+
+::::
+:::
+
+## Lambda-Kalkül: Aufgaben
+
+Nutze nur Lambdas und selbst definierte Ausdrücke
+
+- definiere `and` -- Tipp: if-else
+- definiere `or`
+- definiere `isZero`
+- definiere `add`
+- definiere `times`
+- definiere `exp`
+
+## Lambda-Kalkül: Lösungen
+
+~~~
+
+and = \a b -> a b FALSE
+or = \a b -> a TRUE b
+isZero = \n -> n (\x -> FALSE) TRUE
+add = \n m s z -> m s (n s z)
+times = \n m s z -> n (m s) z
+exp = \n m s z -> n m s z
+~~~
