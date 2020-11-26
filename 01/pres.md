@@ -100,6 +100,33 @@ Schreibe eine Funktion...
 - die prüft, ob eine Zahl prim ist
 - welche die ganzzahlige Potenz geschickt berechnet: $a^{2b}=(a^2)^b$
 
+## Grundlagen: Beispiellösungen 1
+
+~~~
+pow a 0 = 1
+pow a b = a * (pow a (b-1))
+
+isDiv z n = mod z n == 0
+
+ggT x y
+  | x == y = x
+  | x > y = ggT (x-y) y
+  | otherwise = ggT x (y-x)
+~~~
+
+## Grundlagen: Beispiellösungen 2
+
+~~~
+isPrime' p 1 = True
+isPrime' p t = not (isDiv p t) && isPrime' p (t-1)
+isPrime p = isPrime' p (p-1)
+
+xpow a b
+  | b == 0 = 1
+  | isDiv b 2 = xpow (a*a) (div b 2)
+  | otherwise = a * xpow a (b-1)
+~~~
+
 # Typen
 
 ## Funktionale Programmierung
