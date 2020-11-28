@@ -135,7 +135,7 @@
 \setbeamertemplate{frametitle}{
   \ifbeamer@plainframe\else%
     % Unterkante Titeltext: 22,5 mm -> 15 mm von Seitenkopf
-    \begin{textblock*}{\dimexpr\paperwidth-30mm}[0,1](\kitinnermargin,15mm)%
+    \begin{textblock*}{\dimexpr\paperwidth-30mm}[0,1](\kitinnermargin,7mm)%
       \usebeamerfont{frametitle}\insertframetitle%
     \end{textblock*}%
     \begin{textblock*}{20mm}[1,1](\dimexpr\paperwidth-\kitinnermargin\relax,15mm)%j
@@ -143,7 +143,7 @@
     \end{textblock*}%
   \fi
 % Rand oben (ergibt Beginn des Textes bei 34 mm -> 22,7 mm)
-  \vspace {18mm}
+  \vspace {8mm}
 }
 
 %% Fußzeile
