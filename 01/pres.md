@@ -253,6 +253,54 @@ Schreibe eine Funktion...
 - die insertion-sort implementiert
 - die eine Liste umdreht
 
+## Listen: Beispiellösungen 1
+
+~~~
+len [] = 0
+len (x:rest) = 1 + len rest
+
+gerade = filter even [0..]
+gerade2= 0:map (+2) gerade2
+gerade3= iterate (+2) 0
+
+istIn x [] = False
+istIn x (k:rest) = x == k || istIn x rest
+
+~~~
+
+## Listen: Beispiellösungen 2
+
+~~~
+insert x [] = [x]
+insert x (k:rest)
+  | x<k = x:k:rest
+  | otherwise = k:insert x rest
+  
+merge [] xs = xs
+merge ys [] = ys
+merge (x:xs) (y:ys)
+  | x < y = x:merge xs (y:ys)
+  | otherwise = y:merge (x:xs) ys
+
+quadratzahlen = [x*x | x<-[1..]]
+quadratzahlen2= zipWith (*) [1..] [1..]
+~~~
+
+## Listen: Beispiellösungen 3
+
+~~~
+mergeSort (x:[]) = [x]
+mergeSort liste = merge (mergeSort (take l liste)) (mergeSort (drop l liste))
+  where l = div (length liste) 2
+
+insertionSort l = insertionSort' [] l
+insertionSort' sorted [] = sorted
+insertionSort' sorted (x:xs) = insertionSort' (insert x sorted) xs
+
+umdrehen [] = []
+umdrehen (x:xs) = umdrehen xs ++ [x]
+~~~
+
 # Fortgeschritten
 
 ## Fibonacci und `zip`
